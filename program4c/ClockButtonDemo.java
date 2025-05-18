@@ -1,65 +1,73 @@
-package program4c;
+//4c. Develop a Swing program in Java to display a message “Digital Clock is pressed” or “Hour
+//Glass is pressed” depending upon the Jbutton with image either Digital Clock or Hour Glass is
+//pressed by implementing the event handling mechanism with addActionListener( ).
+
+package javaswing;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ClockButtonDemo extends JFrame implements ActionListener {
+public class ImageButtonDemo extends JFrame implements ActionListener{
 
-    JButton digitalButton, hourglassButton;
-    JLabel messageLabel;
+	private JLabel messageLabel;
+    private JButton digitalBtn, hourGlassBtn;
 
-    public ClockButtonDemo() {
+    public ImageButtonDemo() {
         setTitle("Clock Button Example");
-        setSize(400, 300);
+        setSize(600, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(20, 20));
 
-        // Load icons
-        ImageIcon digitalIcon = new ImageIcon("clock.png.png");
-        ImageIcon hourglassIcon = new ImageIcon("hourglass.png.png");
+        // Label at the top
+        messageLabel = new JLabel("Click a button below", SwingConstants.CENTER);
+        messageLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        add(messageLabel, BorderLayout.NORTH);
+
+        // Button Panel
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
+
+        // Load images
+        ImageIcon digitalIcon = new ImageIcon("clock.png");
+        ImageIcon hourglassIcon = new ImageIcon("hourglass.png");
+
+        // Error handling
+        if (digitalIcon.getIconWidth() == -1 || hourglassIcon.getIconWidth() == -1) {
+            JOptionPane.showMessageDialog(this, "Could not load one or both images. Please check if 'clock.png' and 'hourglass.png' are in the project root.", "Image Load Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
 
         // Create buttons
-        digitalButton = new JButton(digitalIcon);
-        hourglassButton = new JButton(hourglassIcon);
+        digitalBtn = new JButton(digitalIcon);
+        hourGlassBtn = new JButton(hourglassIcon);
 
-        // Add action listeners
-        digitalButton.addActionListener(this);
-        hourglassButton.addActionListener(this);
+        digitalBtn.setToolTipText("Digital Clock");
+        hourGlassBtn.setToolTipText("Hour Glass");
 
-        // Panel for buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(digitalButton);
-        buttonPanel.add(hourglassButton);
+        digitalBtn.setBorderPainted(false);
+        digitalBtn.setContentAreaFilled(false);
+        hourGlassBtn.setBorderPainted(false);
+        hourGlassBtn.setContentAreaFilled(false);
+
+        digitalBtn.addActionListener(this);
+        hourGlassBtn.addActionListener(this);
+
+        buttonPanel.add(digitalBtn);
+        buttonPanel.add(hourGlassBtn);
+
         add(buttonPanel, BorderLayout.CENTER);
-
-        // Label for message
-        messageLabel = new JLabel("Press a button", SwingConstants.CENTER);
-        messageLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        add(messageLabel, BorderLayout.SOUTH);
-
-        setLocationRelativeTo(null); // Center the window
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == digitalButton) {
-            messageLabel.setText("Digital Clock is pressed");
-        } else if (e.getSource() == hourglassButton) {
-            messageLabel.setText("Hour Glass is pressed");
+        if (e.getSource() == digitalBtn) {
+            messageLabel.setText("You have pressed digital clock!");
+        } else if (e.getSource() == hourGlassBtn) {
+            messageLabel.setText("You have pressed hour glass!");
         }
     }
 
     public static void main(String[] args) {
-        // Check if images are available
-        if (!new java.io.File("clock.png.png").exists() || !new java.io.File("hourglass.png.png").exists()) {
-            JOptionPane.showMessageDialog(null,
-                "Could not load one or both images. Please check if 'clock.png' and 'hourglass.png' are in the project root.",
-                "Image Load Error",
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        new ClockButtonDemo();
+        SwingUtilities.invokeLater(ImageButtonDemo::new);
     }
 }
