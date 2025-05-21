@@ -171,7 +171,7 @@ Output-https://github.com/abhishekallapur/Advanced-Java-Programs/blob/main/8c.JD
 
 8d. Develop a JDBC project using JDBC to update the fields empno, empname and basicsalary into the table Emp of the database Employee using HTML and JSP to get the fields and display the results respectively
 
-Outputhttps://github.com/abhishekallapur/Advanced-Java-Programs/blob/main/8d.JDBC_project/8d.jpg
+Output-https://github.com/abhishekallapur/Advanced-Java-Programs/blob/main/8d.JDBC_project/8d.jpg
 
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
