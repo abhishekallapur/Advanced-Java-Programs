@@ -1,6 +1,6 @@
 output for ColorRemove-https://github.com/abhishekallapur/Advanced-Java-Programs/blob/main/1b.Array_List/02cff1aa-341c-4016-af06-7893ada19351.jpg
 
-output for ColorSort-
+output for ColorSort-https://github.com/abhishekallapur/Advanced-Java-Programs/blob/main/1b.Array_List/ed7e6ed1-6901-4a56-856c-deeb17f4eb6d.jpg
 
 output for Searchcolor-
 
